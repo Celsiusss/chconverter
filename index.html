@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Clicker Heroes save file converter</title>
+
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://gitcdn.link/repo/nodeca/pako/master/dist/pako.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<section class="section">
+    <div class="container">
+        <h1 class="title">CH Converter</h1>
+
+        <p>Can convert a mobile save game to pc.</p>
+        <p>Supported versions:</p>
+        <ul>
+            <li>Mobile version: 2.6.9</li>
+            <li>PC version: 1.0e12</li>
+        </ul>
+
+        <div class="input-section">
+            <textarea class="textarea" id="input" name="input" cols="30" rows="10" placeholder="Mobile save game"></textarea>
+            <button class="button is-primary" onclick="parse()">Go</button>
+        </div>
+
+        <div id="outputs" style="visibility: hidden">
+            <h2 class="subtitle">Output</h2>
+            <textarea class="textarea" id="output_output" cols="30" rows="10" disabled></textarea>
+            <button class="button is-info" onclick="copyOutput()">Copy</button>
+            <p id="copy_success_msg" style="color: #54a14d; visibility: hidden">Save data copied to clipboard</p>
+        </div>
+    </div>
+</section>
+</body>
+</html>
