@@ -25,13 +25,17 @@ function convertToDesktop(json) {
         lastBonusRewardCheckTimestamp: 0
     }
 
+    const mappedValues = {
+        rubies: Math.round(json.rubies / 10)
+    }
+
     const pcSpecificValues = {
         readPatchNumber: '1.0e12',
         saveOrigin: 'pc'
     }
 
     const hash = '7a990d405d2c6fb93aa8fbb0ec1a3b23';
-    const newData = {...newValues, ...json, ...pcSpecificValues};
+    const newData = {...newValues, ...json, ...mappedValues, ...pcSpecificValues};
     const compressed = pako.deflate(JSON.stringify(newData), {to: 'string'});
     const base64 = btoa(compressed);
 
