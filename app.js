@@ -22,13 +22,16 @@ function convertToDesktop(json) {
         lastRaidAttemptTimestamp: 0,
         lastRaidRewardCheckTimestamp: 0,
         shouldShowHZERoster: false,
-        lastBonusRewardCheckTimestamp: 0,
+        lastBonusRewardCheckTimestamp: 0
+    }
+
+    const pcSpecificValues = {
         readPatchNumber: '1.0e12',
         saveOrigin: 'pc'
     }
 
     const hash = '7a990d405d2c6fb93aa8fbb0ec1a3b23';
-    const newData = {...json, ...newValues};
+    const newData = {...newValues, ...json, ...pcSpecificValues};
     const compressed = pako.deflate(JSON.stringify(newData), {to: 'string'});
     const base64 = btoa(compressed);
 
@@ -73,8 +76,7 @@ function decode_base64 (s) {
             c = e[o.charAt(x)];
             b = (b << 6) + c;
             l += 6;
-            while (l >= 8)
-            {
+            while (l >= 8) {
                 r += w((b >>> (l -= 8)) % 256);
             }
         }
